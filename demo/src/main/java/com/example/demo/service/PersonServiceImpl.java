@@ -5,27 +5,36 @@ import com.example.demo.dto.request.PersonRequestDTO;
 import com.example.demo.dto.response.PersonResponseDTO;
 import com.example.demo.entity.Person;
 import com.example.demo.repository.PersonRepository;
+import com.example.demo.util.PersonMapper;
+import lombok.RequiredArgsConstructor;
 import org.apache.catalina.User;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
 @Primary
+@RequiredArgsConstructor
 public class PersonServiceImpl implements PersonService {
 
-    private PersonRepository personRepository;
+    private final  PersonRepository personRepository;
+
+    private final PersonMapper personMapper;
     @Override
     public PersonResponseDTO findbyId(Long id) {
         Person person = returnPerson(id);
-        return new PersonResponseDTO(person);
+        return personMapper.toPersonalDTO(person);
 
     }
 
     @Override
     public List<PersonResponseDTO> findAll() {
-        return null;
+
+
+        return  personMapper.toPeopleDTO(personRepository.findAll());
+
     }
 
     @Override
