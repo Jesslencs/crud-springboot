@@ -21,13 +21,20 @@ public class PersonMapper {
                 .build();
     }
 
-    public PersonResponseDTO toPersonalDTO(Person person) {
+    public PersonResponseDTO toPersonaDTO(Person person) {
         return new PersonResponseDTO(person);
 
     }
 
     public List<PersonResponseDTO> toPeopleDTO(List<Person> peopleList){
         return peopleList.stream().map(PersonResponseDTO::new).collect(Collectors.toList());
+
+    }
+
+    public void updatePersonData(Person person, PersonRequestDTO personDTO) {
+        person.setName(personDTO.getName());
+        person.setCpf(personDTO.getCpf());
+        person.setAge(personDTO.getAge());
 
     }
 

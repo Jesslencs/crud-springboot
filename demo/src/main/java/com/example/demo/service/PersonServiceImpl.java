@@ -24,8 +24,8 @@ public class PersonServiceImpl implements PersonService {
     private final PersonMapper personMapper;
     @Override
     public PersonResponseDTO findbyId(Long id) {
-        Person person = returnPerson(id);
-        return personMapper.toPersonalDTO(person);
+
+        return personMapper.toPersonaDTO(returnPerson(id));
 
     }
 
@@ -39,18 +39,29 @@ public class PersonServiceImpl implements PersonService {
 
     @Override
     public PersonResponseDTO register(PersonRequestDTO personDTO) {
-        return null;
+        Person person = personMapper.toPerson(personDTO);
+
+       return personMapper.toPersonaDTO(personRepository.save(person));
     }
 
     @Override
-    public PersonResponseDTO update(PersonRequestDTO personDTO, Long id) {
+    public PersonResponseDTO update( Long id, PersonRequestDTO personDTO) {
 
         Person person = returnPerson(id);
+
+        personMapper.updatePersonData(person,personDTO);
+
+       return personMapper.toPersonaDTO(personRepository.save(person));
+
+
     }
 
     @Override
     public String delete(Long id) {
-        return null;
+        personRepository.deleteById(id);
+
+        return "Person id: " + id + "deleted.";
+
     }
 
     private Person returnPerson(Long id){
