@@ -50,7 +50,7 @@ public class PersonController {
 
     public ResponseEntity<PersonResponseDTO> update(@RequestBody PersonRequestDTO personDTO, @PathVariable(name = "id") Long id) {
 
-        return ResponseEntity.ok().body(personService.update(id,personDTO))
+        return ResponseEntity.ok().body(personService.update(id,personDTO));
 
 
 

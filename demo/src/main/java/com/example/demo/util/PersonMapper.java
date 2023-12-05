@@ -4,9 +4,12 @@ package com.example.demo.util;
 import com.example.demo.dto.request.PersonRequestDTO;
 import com.example.demo.dto.response.PersonResponseDTO;
 import com.example.demo.entity.Person;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.stream.Collectors;
+
+@Component
 
 public class PersonMapper {
 
