@@ -1,5 +1,7 @@
 package com.example.demo.dto.response;
 
+import com.example.demo.entity.Person;
+
 public class PersonResponseDTO {
 
 
@@ -11,4 +13,12 @@ public class PersonResponseDTO {
 
 
     private Integer age;
+
+    public  PersonResponseDTO(Person person){
+        this.id=person.getId();
+        this.name = person.getName();
+        this.cpf = person.getCpf();
+        this.age = person.getAge();
+
+    }
 }
