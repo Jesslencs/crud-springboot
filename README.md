@@ -15,3 +15,7 @@
 PostgreSQL - Usado em ambiente de desenvolvimento e produção.
 
 - projeto criado para estudos pessoais.
+
+- # Licença
+- Este projeto está sob a Licença MIT.
+  
